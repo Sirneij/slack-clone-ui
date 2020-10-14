@@ -130,7 +130,7 @@
                 <p class="content-header-text">Track and cordinate social media.</p>
               </section>
             </article>
-            <p class="info"><i class="fas fa-info-circle"></i></p>
+            <button class="btn-borderless btn-slack info" id="info" type="button"> <i class="fas fa-info-circle"></i></button>
           </section>
           <section class="feeds">
             <article class="feed">
@@ -246,7 +246,7 @@
                   <input type="checkbox" name="switchMode" id="switchBox" onchange="setDocMode(this.checked);"
                     title="Show HTML" />
                 </p>
-                <button type="submit" class="button"><i class="fas fa-angle-double-right"></i></button>
+                <button type="submit" class="btn-borderless button"><i class="fas fa-angle-double-right"></i></button>
               </div>
             </div>
             <div class="input-toolbar-selection">
@@ -414,6 +414,96 @@
           </section>
         </article>
       </div>
+
+      <div class="right-sidebar-wrapper" id="right-sidebar-wrapper">
+      <section class="channel-right-sidebar" id="channel-right-sidebar">
+        <section class="right-sidebar-header">
+          <article class="right-sidebar-header-details">
+            <h4 class="right-sidebar-header-name">Details</h4>
+            <p>#social-media</p>
+          </article>
+          <i class="fas fa-times" id="close-right-sidebar"></i>
+        </section>
+        <section class="right-sidebar-contact">
+          <article class="right-sidebar-contact-details">
+            <span><i class="fas fa-user-plus"></i></span>
+            <p>Add</p>
+          </article>
+          <article class="right-sidebar-contact-details">
+            <span><i class="fas fa-search-plus"></i></span>
+            <p>Find</p>
+          </article>
+          <article class="right-sidebar-contact-details">
+            <span><i class="fas fa-phone"></i></span>
+            <p>Call</p>
+          </article>
+          <article class="right-sidebar-contact-details">
+           <span> <i class="fas fa-ellipsis-h"></i></span>
+            <p>More</p>
+          </article>
+        </section>
+
+        <section class="right-sidebar-about">
+          <article class="about-header">
+            <h4>About</h4>
+            <i class="fas fa-chevron-down"></i>
+          </article>
+          <article class="about-details">
+            <div class="about-detail">
+              <h5>Topic</h5>
+              <p>Track and cordinate social media</p>
+            </div>
+            <div class="about-detail">
+              <h5>Description</h5>
+              <p>Home of the social media team</p>
+            </div>
+            <div class="about-img">
+             <div class="about-img-wrapper">
+              <img src="images/user1.jpg" alt="User 1" >
+             </div>
+              <small>Created on October 8th, 2020</small>
+            </div>
+          </article>
+        </section>
+        <section class="other-section">
+          <article class="other-section-header">
+            <h4>Members</h4> 
+            <div>
+              <span>21 <i class="fas fa-chevron-right"></i></span>
+            </div>
+          </article>
+        </section>
+        <section class="other-section">
+          <article class="other-section-header">
+            <h4>Organizations</h4> 
+            <div >
+              <span class="zenith-org">Z</span>
+              <span class="acme-org">A</span>
+              <span> 2 <i class="fas fa-chevron-right"></i></span>
+            </div>
+          </article>
+        </section>
+        <section class="other-section">
+          <article class="other-section-header">
+            <h4>Pinned</h4> 
+            <div>
+              <span>1 <i class="fas fa-chevron-right"></i></span>
+            </div>
+          </article>
+        </section>
+        <section class="other-section">
+          <article class="other-section-header">
+            <h4>Shortcuts</h4> 
+            <div>
+              <span>1 <i class="fas fa-chevron-right"></i></span>
+            </div>
+          </article>
+        </section>
+      </section>
+    </section>
+  </div>
+
+
     </main>
   </div>
   <script src="script.js"></script>

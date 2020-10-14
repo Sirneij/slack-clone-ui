@@ -679,6 +679,7 @@ body::-webkit-scrollbar-thumb {
   margin-left: auto;
   margin-right: 1rem;
   color: #9e9a9a;
+  cursor: pointer;
 }
 
 /* feeds */
@@ -881,7 +882,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   align-items: center;
 }
-.button {
+.btn-borderless {
   border: none;
   background-color: inherit;
   border-radius: 0.5rem;
@@ -892,6 +893,12 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--slack-green);
 }
 .button:hover i {
+  color: var(--slack-main-white);
+}
+.btn-slack:hover {
+  background-color: var(--slack-background);
+}
+.btn-slack:hover i {
   color: var(--slack-main-white);
 }
 /* end of feeds */
@@ -928,6 +935,7 @@ body::-webkit-scrollbar-thumb {
   color: var(--slack-white);
   margin-right: 1rem;
   font-size: 1.2rem;
+  cursor: pointer;
 }
 .right-sidebar-contact {
   display: flex;
@@ -1537,6 +1545,41 @@ body::-webkit-scrollbar-thumb {
   opacity: 1;
   visibility: visible;
 }
+.right-sidebar-wrapper {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+.channel-right-sidebar {
+  position: fixed;
+  top: 0;
+  right: -20rem;
+  width: 20rem;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: -0.1rem 0 0.5rem rgba(0, 0, 0, 0.3);
+  transition: right 0.5s cubic-bezier(1, 0, 0, 1);
+  overflow: auto;
+}
+.sidebar-wrapper-display {
+  opacity: 1;
+  visibility: visible;
+}
+.channel-sidebar-display {
+  right: 0;
+}
+
+.disabled {
+  cursor: initial;
+  background-color: var(--dark-grey);
+  color: var(--slack-main-white);
+}
 
 @media (max-width: 1250px) {
   .body {
@@ -1565,7 +1608,7 @@ body::-webkit-scrollbar-thumb {
     padding: 0.8rem 12rem 0.8rem 0.8rem;
   }
 }
-@media (max-width: 800px) {
+@media (max-width: 806px) {
   .sidebar {
     grid-template-columns: minmax(6.25rem, 16.25rem);
   }
@@ -1577,6 +1620,12 @@ body::-webkit-scrollbar-thumb {
   }
   .nav .icons {
     margin-left: 0.5rem;
+  }
+  .input-toolbar-icons {
+    padding: 0.2rem 0.3rem;
+  }
+  .input-toolbar-icons i {
+    padding: 0.3rem 0.3rem;
   }
 }
 @media (min-width: 800px) {
@@ -1628,6 +1677,15 @@ body::-webkit-scrollbar-thumb {
     padding: 0.8rem 5rem 0.8rem 0.8rem;
   }
 }
+@media (max-width: 466px) {
+  .input-toolbar-icons {
+    font-size: 0.8rem;
+    padding: 0.2rem;
+  }
+  .input-toolbar-icons i {
+    padding: 0.2rem;
+  }
+}
 @media (max-width: 422px) {
   .nav .icons a {
     margin-right: 0.8rem;
@@ -1644,6 +1702,23 @@ body::-webkit-scrollbar-thumb {
     font-size: 0.8rem;
   }
 }
+
+@media (max-width: 358px) {
+  .input-toolbar-icons {
+    font-size: 0.8rem;
+    padding: 0.1rem;
+  }
+  .input-toolbar-icons i {
+    padding: 0.1rem;
+  }
+}
+
+@media (max-width: 310px) {
+  .input-toolbar-icons {
+    font-size: 0.6rem;
+  }
+}
+
 @media (max-width: 326px) {
   .content-header-icons i {
     font-size: 0.7rem;
@@ -1673,5 +1748,18 @@ body::-webkit-scrollbar-thumb {
   }
   .file-figure i {
     margin-right: 0.5rem;
+  }
+}
+@media (max-width: 304px) {
+  .search-bar-input {
+    padding-left: 1rem;
+  }
+  .search-bar i {
+    left: 0.1rem;
+  }
+}
+@media (max-width: 254px) {
+  .input-toolbar-icons {
+    flex-wrap: wrap;
   }
 }

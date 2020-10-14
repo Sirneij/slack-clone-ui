@@ -72,6 +72,11 @@ const sideBarWrapper = document.getElementById("sidebar-wrapper");
 const sideBar = document.getElementById("user-sidebar");
 const user = document.getElementById("user");
 
+const info = document.getElementById("info");
+const rightSidebarWrapper = document.getElementById("right-sidebar-wrapper");
+const channelRightSidebar = document.getElementById("channel-right-sidebar");
+const closeRightSidebar = document.getElementById("close-right-sidebar");
+
 // sidebar
 if (user) {
   user.addEventListener("click", () => {
@@ -90,10 +95,49 @@ if (closeSideBar) {
   });
 }
 
+// Right sidebar displaying channel info
+
+const enableInfoButton = (breaker) => {
+  if (breaker.matches) {
+    info.removeAttribute("disabled");
+    info.classList.remove("disabled");
+  } else {
+    info.setAttribute("disabled", "true");
+    info.classList.add("disabled");
+  }
+};
+
+if (matchMedia) {
+  const sidebarBreak = window.matchMedia("(max-width: 1250px)");
+  sidebarBreak.addEventListener("change", enableInfoButton);
+  enableInfoButton(sidebarBreak);
+}
+
+if (info) {
+  info.addEventListener("click", () => {
+    if (rightSidebarWrapper) {
+      rightSidebarWrapper.classList.add("sidebar-wrapper-display");
+    }
+    if (channelRightSidebar) {
+      channelRightSidebar.classList.add("channel-sidebar-display");
+    }
+  });
+}
+
+if (closeRightSidebar) {
+  closeRightSidebar.addEventListener("click", () => {
+    channelRightSidebar.classList.remove("channel-sidebar-display");
+    rightSidebarWrapper.classList.remove("sidebar-wrapper-display");
+  });
+}
+
 // click anywhere in the browser to close modals
 window.onclick = (e) => {
   if (e.target == sideBarWrapper) {
     sideBar.classList.remove("sidebar-display");
     sideBarWrapper.classList.remove("sidebar-wrapper-display");
+  } else if (e.target == rightSidebarWrapper) {
+    channelRightSidebar.classList.remove("channel-sidebar-display");
+    rightSidebarWrapper.classList.remove("sidebar-wrapper-display");
   }
 };
