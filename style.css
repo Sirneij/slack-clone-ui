@@ -1310,6 +1310,10 @@ body::-webkit-scrollbar-thumb {
   color: var(--slack-white);
 }
 
+.btn-small-margin {
+  margin-left: 0;
+}
+
 /* end of channel creation */
 
 /* card */
