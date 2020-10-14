@@ -1430,13 +1430,13 @@ body::-webkit-scrollbar-thumb {
   transition: left 0.5s cubic-bezier(1, 0, 0, 1);
   overflow: auto;
 }
-.close {
+.sidebar-user .close {
+  position: absolute;
   top: -1rem;
   right: 0.3rem;
-}
-.sidebar-user-info .close {
   font-size: 1rem;
 }
+
 .user-sidebar-display {
   left: 0;
 }
