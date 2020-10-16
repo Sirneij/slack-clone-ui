@@ -66,7 +66,39 @@ function printDoc() {
   );
   oPrntWin.document.close();
 }
-
+const addCodeBLock = () => {
+  if (validateMode()) {
+    const codeBlock = document.createElement("pre");
+    const target = document.getSelection();
+    if (
+      target.focusNode.nodeName.includes("#text") ||
+      target.focusNode.className.includes("codeblock")
+    ) {
+      return;
+    }
+    const id = `codeBlock-${
+      document.getElementsByClassName("codeblock").length + 1
+    }`;
+    codeBlock.classList.add("codeblock");
+    formatDoc(
+      "insertHTML",
+      `<pre class="codeblock" id="${id}">${target}</pre>`
+    );
+    addLineAfterBlock(id);
+    oDoc.focus();
+  }
+};
+const addLineAfterBlock = (id) => {
+  const block = document.getElementById(`${id}`);
+  const div = document.createElement("div");
+  const br = document.createElement("br");
+  div.appendChild(br);
+  if (!block) {
+    return;
+  } else {
+    block.after(div);
+  }
+};
 const closeSideBar = document.getElementById("close");
 const sideBarWrapper = document.getElementById("sidebar-wrapper");
 const sideBar = document.getElementById("user-sidebar");
