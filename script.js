@@ -99,10 +99,10 @@ if (closeSideBar) {
 
 const enableInfoButton = (breaker) => {
   if (breaker.matches) {
-    info.removeAttribute("disabled");
+    info.disabled = false;
     info.classList.remove("disabled");
   } else {
-    info.setAttribute("disabled", "true");
+    info.disabled = true;
     info.classList.add("disabled");
   }
 };
