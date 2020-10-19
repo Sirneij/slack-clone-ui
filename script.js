@@ -1,104 +1,27 @@
-var oDoc, sDefTxt;
+const editControls = document.querySelector(".input-toolbar-icons");
 
-function initDoc() {
-  oDoc = document.getElementById("textBox");
-  sDefTxt = oDoc.innerHTML;
-  if (document.feedForm.switchMode.checked) {
-    setDocMode(true);
-  }
-}
+editControls.addEventListener("click", function (event) {
+  const command =
+    event.target !== undefined &&
+    event.target.getAttribute("data-command") !== null
+      ? event.target.getAttribute("data-command")
+      : null;
+  if (command === null) return;
+  console.log("Selected command: " + command);
 
-function formatDoc(sCmd, sValue) {
-  if (validateMode()) {
-    document.execCommand(sCmd, false, sValue);
-    oDoc.focus();
-  }
-}
-
-function validateMode() {
-  if (!document.feedForm.switchMode.checked) {
-    return true;
-  }
-  alert('Uncheck"Show HTML".');
-  oDoc.focus();
-  return false;
-}
-
-function setDocMode(bToSource) {
-  var oContent;
-  if (bToSource) {
-    oContent = document.createTextNode(oDoc.innerHTML);
-    oDoc.innerHTML = "";
-    var oPre = document.createElement("pre");
-    oDoc.contentEditable = false;
-    oPre.id = "sourceText";
-    oPre.contentEditable = true;
-    oPre.appendChild(oContent);
-    oDoc.appendChild(oPre);
-    document.execCommand("defaultParagraphSeparator", false, "div");
-  } else {
-    if (document.all) {
-      oDoc.innerHTML = oDoc.innerText;
-    } else {
-      oContent = document.createRange();
-      oContent.selectNodeContents(oDoc.firstChild);
-      oDoc.innerHTML = oContent.toString();
-    }
-    oDoc.contentEditable = true;
-  }
-  oDoc.focus();
-}
-
-function printDoc() {
-  if (!validateMode()) {
+  if (document.getSelection().toString().length === 0) {
+    alert("Please select some text before editing the content.");
     return;
   }
-  var oPrntWin = window.open(
-    "",
-    "_blank",
-    "width=450,height=470,left=400,top=100,menubar=yes,toolbar=no,location=no,scrollbars=yes"
-  );
-  oPrntWin.document.open();
-  oPrntWin.document.write(
-    '<!doctype html><html><head><title>Print</title></head><body onload="print();">' +
-      oDoc.innerHTML +
-      "</body></html>"
-  );
-  oPrntWin.document.close();
-}
-const addCodeBLock = () => {
-  if (validateMode()) {
-    const codeBlock = document.createElement("pre");
-    const target = document.getSelection();
-    if (
-      target.focusNode.nodeName.includes("#text") ||
-      target.focusNode.className.includes("codeblock")
-    ) {
-      return;
-    }
-    const id = `codeBlock-${
-      document.getElementsByClassName("codeblock").length + 1
-    }`;
-    codeBlock.classList.add("codeblock");
-    formatDoc(
-      "insertHTML",
-      `<pre class="codeblock" id="${id}">${target}</pre>`
-    );
-    addLineAfterBlock(id);
-    oDoc.focus();
-  }
-};
-const addLineAfterBlock = (id) => {
-  const block = document.getElementById(`${id}`);
-  const div = document.createElement("div");
-  const br = document.createElement("br");
-  div.appendChild(br);
-  if (!block) {
-    return;
-  } else {
-    block.after(div);
-  }
-};
+
+  let range = window.getSelection().getRangeAt(0);
+  const oldConent = document.createTextNode(range.toString());
+  const newElement = document.createElement(command);
+  newElement.append(oldConent);
+  range.deleteContents();
+  range.insertNode(newElement);
+});
+
 const closeSideBar = document.getElementById("close");
 const sideBarWrapper = document.getElementById("sidebar-wrapper");
 const sideBar = document.getElementById("user-sidebar");

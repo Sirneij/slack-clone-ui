@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body onload="initDoc();">
+  <body>
     <div class="container">
       <!-- Header and navigation -->
       <header class="header">
@@ -255,57 +255,27 @@
                 </section>
               </article>
             </section>
-            <form
-              action="."
-              class="form"
-              name="feedForm"
-              onsubmit="if(validateMode()){this.myDoc.value=oDoc.innerHTML;return true;}return false;"
-            >
-              <input type="hidden" name="myDoc" />
+            <form action="." class="form" name="feedForm">
               <div class="input" id="textBox" contenteditable="true">
                 <p>Message #social-media</p>
               </div>
               <div class="input-toolbar-icons">
                 <div class="move-right">
                   <i class="fas fa-bolt"></i>
-                  <i class="fas fa-bold" onclick="formatDoc('bold');"></i>
-                  <i class="fas fa-italic" onclick="formatDoc('italic');"></i>
-                  <i
-                    class="fas fa-strikethrough"
-                    onclick="formatDoc('strikeThrough');"
-                  ></i>
-                  <i class="fas fa-code"></i>
-                  <i
-                    class="fas fa-link"
-                    onclick="var sLnk=prompt('Write the URL here','http:\/\/');if(sLnk&&sLnk!=''&&sLnk!='http://'){formatDoc('createlink',sLnk)}"
-                  ></i>
-                  <i
-                    class="fas fa-list-ol"
-                    onclick="formatDoc('insertOrderedList');"
-                  ></i>
-                  <i
-                    class="fas fa-list-ul"
-                    onclick="formatDoc('insertUnorderedList');"
-                  ></i>
-                  <i
-                    class="fas fa-quote-left"
-                    onclick="formatDoc('formatblock','blockquote');"
-                  ></i>
-                  <i class="far fa-file-code" onclick="addCodeBLock();"></i>
+                  <i class="fas fa-bold" data-command="b"></i>
+                  <i class="fas fa-italic" data-command="i"></i>
+                  <i class="fas fa-strikethrough"></i>
+                  <i class="fas fa-code" data-command="code"></i>
+                  <i class="fas fa-link" data-command="a"></i>
+                  <i class="fas fa-list-ol" data-command="ol"></i>
+                  <i class="fas fa-list-ul" data-command="ul"></i>
+                  <i class="fas fa-quote-left" data-command="blockquote"></i>
+                  <i class="far fa-file-code" data-command="pre"></i>
                   <i class="fas fa-print" onclick="printDoc();"></i>
                 </div>
                 <div class="move-left">
                   <i class="fas fa-at"></i>
                   <i class="far fa-smile"></i>
-                  <p id="editMode">
-                    <input
-                      type="checkbox"
-                      name="switchMode"
-                      id="switchBox"
-                      onchange="setDocMode(this.checked);"
-                      title="Show HTML"
-                    />
-                  </p>
                   <button type="submit" class="btn-borderless button">
                     <i class="fas fa-angle-double-right"></i>
                   </button>
